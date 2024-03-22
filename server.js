@@ -2,7 +2,7 @@
 import express from "express";
 import sql from "msnodesqlv8";
 import createRouter from "./routes/routes.js";
-import { databaseMiddleware } from "./config/dbMiddleware.js";
+
 import dbConfig from "./config/dbConfig.js";
 
 const app = express();
@@ -19,7 +19,7 @@ sql.open(connectionString, (err, conn) => {
     } else {
         console.log("Database connected successfully");
 
-      
+
         app.use('/crud', createRouter(conn));
     }
 });
